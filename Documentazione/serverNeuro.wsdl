@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="urn:ServerNeuro" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="urn:ServerNeuro" xmlns:intf="urn:ServerNeuro" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://sql.java" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="urn:ServerNeuro" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://sql.java"/>
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="ArrayOf_soapenc_string">
+    <complexContent>
+     <restriction base="soapenc:Array">
+      <attribute ref="soapenc:arrayType" wsdl:arrayType="soapenc:string[]"/>
+     </restriction>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="medicoResponse">
+
+      <wsdl:part name="medicoReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="connettiRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="verifica_eliminaResponse">
+
+      <wsdl:part name="verifica_eliminaReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getRowCountRequest">
+
+      <wsdl:part name="set" type="xsd:anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginResponse">
+
+      <wsdl:part name="loginReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="verifica_eliminaRequest">
+
+      <wsdl:part name="utente" type="soapenc:string"/>
+
+      <wsdl:part name="ruolo" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getConnessioneResponse">
+
+      <wsdl:part name="getConnessioneReturn" type="xsd:anyType"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="aggiungi_malattiaResponse">
+
+      <wsdl:part name="aggiungi_malattiaReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="connettiResponse">
+
+      <wsdl:part name="connettiReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="arrayToStringResponse">
+
+      <wsdl:part name="arrayToStringReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="arrayToStringRequest">
+
+      <wsdl:part name="array" type="impl:ArrayOf_soapenc_string"/>
+
+      <wsdl:part name="delimiter" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="elimina_utenteRequest">
+
+      <wsdl:part name="utente" type="soapenc:string"/>
+
+      <wsdl:part name="ruolo" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="aggiungi_utenteRequest">
+
+      <wsdl:part name="user" type="soapenc:string"/>
+
+      <wsdl:part name="password" type="soapenc:string"/>
+
+      <wsdl:part name="ruolo" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="aggiungi_malattiaRequest">
+
+      <wsdl:part name="malattia" type="soapenc:string"/>
+
+      <wsdl:part name="eta" type="xsd:int"/>
+
+      <wsdl:part name="descrizione" type="soapenc:string"/>
+
+      <wsdl:part name="sexarra" type="impl:ArrayOf_soapenc_string"/>
+
+      <wsdl:part name="selec" type="impl:ArrayOf_soapenc_string"/>
+
+      <wsdl:part name="sintom" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="medicoRequest">
+
+      <wsdl:part name="age" type="xsd:int"/>
+
+      <wsdl:part name="sexstr" type="soapenc:string"/>
+
+      <wsdl:part name="etniastr" type="soapenc:string"/>
+
+      <wsdl:part name="sintom" type="impl:ArrayOf_soapenc_string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="aggiungi_utenteResponse">
+
+      <wsdl:part name="aggiungi_utenteReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getConnessioneRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="getRowCountResponse">
+
+      <wsdl:part name="getRowCountReturn" type="xsd:int"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="loginRequest">
+
+      <wsdl:part name="user" type="soapenc:string"/>
+
+      <wsdl:part name="password" type="soapenc:string"/>
+
+      <wsdl:part name="ruolo" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="elimina_utenteResponse">
+
+      <wsdl:part name="elimina_utenteReturn" type="soapenc:string"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ServerNeuro">
+
+      <wsdl:operation name="getConnessione">
+
+         <wsdl:input message="impl:getConnessioneRequest" name="getConnessioneRequest"/>
+
+         <wsdl:output message="impl:getConnessioneResponse" name="getConnessioneResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="connetti">
+
+         <wsdl:input message="impl:connettiRequest" name="connettiRequest"/>
+
+         <wsdl:output message="impl:connettiResponse" name="connettiResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login" parameterOrder="user password ruolo">
+
+         <wsdl:input message="impl:loginRequest" name="loginRequest"/>
+
+         <wsdl:output message="impl:loginResponse" name="loginResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verifica_elimina" parameterOrder="utente ruolo">
+
+         <wsdl:input message="impl:verifica_eliminaRequest" name="verifica_eliminaRequest"/>
+
+         <wsdl:output message="impl:verifica_eliminaResponse" name="verifica_eliminaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="elimina_utente" parameterOrder="utente ruolo">
+
+         <wsdl:input message="impl:elimina_utenteRequest" name="elimina_utenteRequest"/>
+
+         <wsdl:output message="impl:elimina_utenteResponse" name="elimina_utenteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="aggiungi_utente" parameterOrder="user password ruolo">
+
+         <wsdl:input message="impl:aggiungi_utenteRequest" name="aggiungi_utenteRequest"/>
+
+         <wsdl:output message="impl:aggiungi_utenteResponse" name="aggiungi_utenteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="aggiungi_malattia" parameterOrder="malattia eta descrizione sexarra selec sintom">
+
+         <wsdl:input message="impl:aggiungi_malattiaRequest" name="aggiungi_malattiaRequest"/>
+
+         <wsdl:output message="impl:aggiungi_malattiaResponse" name="aggiungi_malattiaResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="medico" parameterOrder="age sexstr etniastr sintom">
+
+         <wsdl:input message="impl:medicoRequest" name="medicoRequest"/>
+
+         <wsdl:output message="impl:medicoResponse" name="medicoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="arrayToString" parameterOrder="array delimiter">
+
+         <wsdl:input message="impl:arrayToStringRequest" name="arrayToStringRequest"/>
+
+         <wsdl:output message="impl:arrayToStringResponse" name="arrayToStringResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRowCount" parameterOrder="set">
+
+         <wsdl:input message="impl:getRowCountRequest" name="getRowCountRequest"/>
+
+         <wsdl:output message="impl:getRowCountResponse" name="getRowCountResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ServerNeuroSoapBinding" type="impl:ServerNeuro">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getConnessione">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getConnessioneRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getConnessioneResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="connetti">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="connettiRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="connettiResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="login">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="loginRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="loginResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="verifica_elimina">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="verifica_eliminaRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="verifica_eliminaResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="elimina_utente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="elimina_utenteRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="elimina_utenteResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="aggiungi_utente">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="aggiungi_utenteRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="aggiungi_utenteResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="aggiungi_malattia">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="aggiungi_malattiaRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="aggiungi_malattiaResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="medico">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="medicoRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="medicoResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="arrayToString">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="arrayToStringRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="arrayToStringResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getRowCount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getRowCountRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getRowCountResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="urn:ServerNeuro" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ServerNeuroService">
+
+      <wsdl:port binding="impl:ServerNeuroSoapBinding" name="ServerNeuro">
+
+         <wsdlsoap:address location="http://localhost:8080/soap/servlet/rpcrouter/ServerNeuro"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
